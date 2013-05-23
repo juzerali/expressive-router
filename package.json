@@ -1,0 +1,16 @@
+{
+  "name": "expressive-router",
+  "version": "0.0.0",
+  "author": "Juzer Ali",
+  "dependencies": {
+    "methods": "0.0.1"
+  },
+  "devDependencies": {
+    "express": "*",
+    "mocha": "*",
+    "supertest": "~0.6.0"
+  },
+  "scripts": {
+      "test": "./node_modules/.bin/mocha"
+  }
+}
