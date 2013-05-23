@@ -1,1 +1,1 @@
-module.exports = require("./lib/Router");
+module.exports = require("./lib/Router/index");

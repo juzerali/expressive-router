@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "author": "Juzer Ali",
   "dependencies": {
-    "methods": "0.0.1"
+    "methods": "0.0.1",
+    "connect": "~2.7.10",
+    "debug": "~0.7.2"
   },
   "devDependencies": {
     "express": "*",
@@ -11,6 +13,6 @@
     "supertest": "~0.6.0"
   },
   "scripts": {
-      "test": "./node_modules/.bin/mocha"
+    "test": "./node_modules/.bin/mocha"
   }
 }
