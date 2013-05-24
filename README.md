@@ -3,27 +3,55 @@ expressive-router
 
 Alternate router for express. Matches request and handler based on request headers, params, and content negotiation
 
+# Install
 ```
-app.get("/?x=something&y=", "Content-Type: text/plain", "produces=html", function(req, res){
-    var params = req.params
-    params.x // "something"
-    params.hasOwnProperty("y") // true
-    req.header["Content-Type"] // text/plain, text/*, */*
-    req.header["Accepts"] //application/json
-    
-    res.json("<h1>Say: Hello World!</h1>");
-})
+npm install expressive-router express
+```
+
+# Setup
+
+```javascript
+var express = require('express')
+  , router = require("expressive-router");
+
+var app = express();
+router.extend(app);
+```
+
+# Match headers
+```javascript
+
+    app.get("/p", "X-Forwarded-For: 0.0.0.0", function(req, res){
+        req.header(X-Forwarded-For) 
+        //=> 0.0.0.0
+
+        //handle request
+    })
 ```
 
 
-```
-app.get("/?x=something&y=", "Content-Type: text/plain", "produces=json", function(req, res){
-    var params = req.params
-    params.x // "something"
-    params.hasOwnProperty("y") // true
-    req.header["Content-Type"] // text/plain, text/*, */*
-    req.header["Accepts"] //application/json
+```javascript
     
-    res.json({"say": "Hello World!"})
-})
+    app.get("/?foo=bar&baz=", function(req, res){
+        /*
+        * It will reach here only when req parameters 
+        * 1. foo equal to "bar"
+        * 2. and has baz present
+        */
+        req.param("foo")
+        //=> "bar"
+
+        req.param("baz")
+        //=> "Whatever"
+    })
 ```
+
+# Content Negotiation
+    Example not available
+
+# Caveat
+Live express paths, put the most specific or greedy path first.
+For example put `app.get("/foo=bar&bar=baz"...)` before `app.get("/foo=bar"...)`. If you register them in reverse order, the more specific one will never get called
+
+# Licence
+MIT
