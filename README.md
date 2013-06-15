@@ -55,7 +55,7 @@ Same semantics for all methods. In other words, it doesn't matter where the ment
     Example not available
 
 # Caveat
-Like express paths, put the most specific or greedy path first.
+Like express paths, put the most specific or non-greedy path first.
 For example put `app.get("/foo=bar&bar=baz"...)` before `app.get("/foo=bar"...)`. If you register them in reverse order, the more specific one will never get called and `app.get("/foo=bar"...)` will serve the request intended for both of 'em.
 
 # Licence
